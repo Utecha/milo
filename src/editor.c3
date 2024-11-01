@@ -11,7 +11,7 @@ import std::io;
 
 /*=== BEGIN SECTION 'Definitions' ===*/
 
-const String MILO_VERSION = "0.0.1";
+const String MILO_VERSION = "0.0.2";
 const String MILO_WELCOME = "Milo Editor -- Version %s";
 
 macro String getWelcome()

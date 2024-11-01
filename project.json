@@ -9,7 +9,8 @@
   "output": "build",
   "targets": {
     "milo": {
-      "type": "executable"
+      "type": "executable",
+      "target": "linux-x64"
     }
   },
   "cpu": "generic",
