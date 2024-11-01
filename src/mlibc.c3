@@ -34,6 +34,7 @@ import libc;
  * The first one (CG) is the window size getter bit.
  * The second one (CS) is the window size setter bit.
  *
+ * These flags are designed to be passed into 'ioctl()' below.
  * On linux, these are defined in '/usr/include/asm-generic/ioctls.h'.
 */
 const CInt TIOCGWINSZ @builtin = 0x5413;
@@ -44,6 +45,9 @@ const Fd STDIN  @builtin = libc::STDIN_FD;
 const Fd STDOUT @builtin = libc::STDOUT_FD;
 const Fd STDERR @builtin = libc::STDERR_FD;
 
+/* Binding to the 'ioctl' function */
+extern fn CInt ioctl(Fd fd, CInt request, ...) @builtin;
+
 /*
  * The below functions exist to call the original corresponding functions
  * without having to qualify it with 'libc::'.
@@ -53,6 +57,9 @@ const Fd STDERR @builtin = libc::STDERR_FD;
 
 fn isz read(Fd fd, void *buf, usz nbyte) @builtin
     => libc::read(fd, buf, nbyte);
+
+fn isz write(Fd fd, void *buf, usz nbyte) @builtin
+    => libc::write(fd, buf, nbyte);
 
 fn Errno errno() @builtin
     => libc::errno();
